@@ -173,11 +173,48 @@
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <div class="step-title">建立 GitHub 帳號</div>
-          <p class="step-desc">前往 <a href="https://github.com" target="_blank">github.com</a> 註冊帳號。建議使用學號或真實姓名作為帳號名稱，方便老師識別。完成後確認 email 驗證。</p>
+          <div class="step-title">建立 GitHub 帳號 & 安裝開發工具</div>
+          <p class="step-desc">前往 <a href="https://github.com" target="_blank">github.com</a> 註冊帳號，建議使用學號或真實姓名，方便老師識別。完成後依序安裝以下工具：</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:.75rem 0">
+            <div style="border:1px solid var(--border);border-radius:var(--r-sm);padding:.85rem;text-align:center">
+              <div style="font-size:22px;margin-bottom:4px">🔧</div>
+              <div style="font-size:13px;font-weight:600">Git</div>
+              <div style="font-size:11px;color:var(--text2);margin-top:2px">版本控制核心</div>
+              <a href="https://git-scm.com/download/win" target="_blank" style="display:inline-block;margin-top:8px;font-size:11px;color:var(--primary);text-decoration:none;border:1px solid var(--primary-lt);background:var(--primary-lt);padding:3px 10px;border-radius:5px">下載安裝 →</a>
+            </div>
+            <div style="border:1px solid var(--border);border-radius:var(--r-sm);padding:.85rem;text-align:center">
+              <div style="font-size:22px;margin-bottom:4px">💙</div>
+              <div style="font-size:13px;font-weight:600">VS Code</div>
+              <div style="font-size:11px;color:var(--text2);margin-top:2px">程式碼編輯器</div>
+              <a href="https://code.visualstudio.com" target="_blank" style="display:inline-block;margin-top:8px;font-size:11px;color:var(--primary);text-decoration:none;border:1px solid var(--primary-lt);background:var(--primary-lt);padding:3px 10px;border-radius:5px">下載安裝 →</a>
+            </div>
+            <div style="border:1px solid var(--border);border-radius:var(--r-sm);padding:.85rem;text-align:center">
+              <div style="font-size:22px;margin-bottom:4px">🐙</div>
+              <div style="font-size:13px;font-weight:600">GitHub Desktop</div>
+              <div style="font-size:11px;color:var(--text2);margin-top:2px">視覺化 Git 工具</div>
+              <a href="https://desktop.github.com" target="_blank" style="display:inline-block;margin-top:8px;font-size:11px;color:var(--primary);text-decoration:none;border:1px solid var(--primary-lt);background:var(--primary-lt);padding:3px 10px;border-radius:5px">下載安裝 →</a>
+            </div>
+          </div>
+
+          <p class="step-desc" style="margin-top:.5rem">安裝完 VS Code 後，開啟 VS Code → 點左側 <strong>Extensions（積木圖示）</strong> → 搜尋並安裝以下擴充套件：</p>
+          <div style="display:flex;flex-direction:column;gap:6px;margin:.5rem 0">
+            <div style="display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:var(--r-sm);padding:.6rem .9rem;font-size:13px">
+              <span style="font-size:18px">🟢</span>
+              <div><strong>Live Server</strong> <span style="color:var(--text2);font-size:12px">— 儲存檔案後瀏覽器自動重新整理，即時預覽網頁</span></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:var(--r-sm);padding:.6rem .9rem;font-size:13px">
+              <span style="font-size:18px">🔵</span>
+              <div><strong>Prettier - Code formatter</strong> <span style="color:var(--text2);font-size:12px">— 自動排版 HTML / CSS / JS，讓程式碼整齊</span></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:var(--r-sm);padding:.6rem .9rem;font-size:13px">
+              <span style="font-size:18px">🟣</span>
+              <div><strong>GitHub Copilot</strong> <span style="color:var(--text2);font-size:12px">— AI 程式碼建議（學生帳號免費）使用後須記錄於 AI 日誌</span></div>
+            </div>
+          </div>
           <div class="alert alert-info">
             <span class="alert-icon">💡</span>
-            <span>已有 GitHub 帳號可直接跳到步驟 2。若要申請 GitHub Student Pack 可享有更多功能（非必須）。</span>
+            <span>Git 必須在 VS Code 之前安裝，VS Code 才能自動偵測到 Git 並啟用版本控制功能。</span>
           </div>
         </div>
       </div>
@@ -186,8 +223,13 @@
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
-          <div class="step-title">建立 Portfolio Repository</div>
-          <p class="step-desc">登入後點擊右上角 <strong>「+」→ New repository</strong>。Repository name 填入 <code style="background:var(--bg2);padding:2px 6px;border-radius:4px;font-size:12px">portfolio</code>，設為 <strong>Public</strong>，勾選 <strong>Add a README file</strong>，然後按 Create repository。</p>
+          <div class="step-title">建立 Repository 並啟用 GitHub Pages</div>
+          <p class="step-desc">登入 GitHub → 右上角 <strong>「+」→ New repository</strong>。Repository name 填入 <code style="background:var(--bg2);padding:2px 6px;border-radius:4px;font-size:12px">portfolio</code>，設為 <strong>Public</strong>，勾選 <strong>Add a README file</strong>，按 Create repository。</p>
+          <p class="step-desc" style="margin-top:.6rem">建立後啟用 GitHub Pages：<strong>Settings → Pages → Branch: main / root → Save</strong>。約 1–2 分鐘後你的網站網址為：</p>
+          <div class="code-wrap">
+            <span class="code-label">你的作品集網址</span>
+            <pre><span class="h">https://</span><span class="v">{你的GitHub帳號}</span><span class="h">.github.io/portfolio</span></pre>
+          </div>
           <div class="alert alert-warn">
             <span class="alert-icon">⚠️</span>
             <span>Repository 必須設為 <strong>Public</strong>，老師才能查閱你的作品與 commit 歷史。</span>
@@ -199,16 +241,31 @@
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <div class="step-title">啟用 GitHub Pages</div>
-          <p class="step-desc">進入 repository → 上方選單點 <strong>Settings</strong> → 左側選 <strong>Pages</strong> → Source 選 <strong>Deploy from a branch</strong> → Branch 選 <strong>main</strong> / <strong>root</strong> → Save。</p>
-          <p class="step-desc">約等待 1–2 分鐘後，你的網站網址將會是：</p>
-          <div class="code-wrap">
-            <span class="code-label">你的作品集網址</span>
-            <pre><span class="h">https://</span><span class="v">{你的GitHub帳號}</span><span class="h">.github.io/portfolio</span></pre>
+          <div class="step-title">用 VS Code Clone Repository 到電腦</div>
+          <p class="step-desc">把 GitHub 上的 repository 複製到本機，才能在 VS Code 編輯並推送到 GitHub Pages。</p>
+
+          <p class="step-desc"><strong>方法 A：用 GitHub Desktop（推薦初學者）</strong></p>
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-sm);padding:.85rem 1rem;font-size:13px;color:var(--text2);line-height:1.9;margin-bottom:.75rem">
+            1. 開啟 GitHub Desktop → 登入 GitHub 帳號<br>
+            2. <strong>File → Clone Repository</strong> → 選你的 <code style="background:#fff;padding:1px 5px;border-radius:3px">portfolio</code> repo → 選擇存放位置 → Clone<br>
+            3. 點 <strong>Open in Visual Studio Code</strong> → VS Code 自動開啟專案資料夾
           </div>
+
+          <p class="step-desc"><strong>方法 B：用 VS Code 內建終端機</strong></p>
+          <div class="code-wrap">
+            <span class="code-label">VS Code 終端機（Ctrl + ` 開啟）</span>
+            <button class="copy-btn" onclick="copyCode(this)">複製</button>
+            <pre><span class="c"># 第一次設定（只需做一次）</span>
+git config --global user.name <span class="s">"你的姓名"</span>
+git config --global user.email <span class="s">"你的GitHub Email"</span>
+
+<span class="c"># Clone 到本機（貼上你的 repo 網址）</span>
+git clone https://github.com/<span class="v">你的帳號</span>/portfolio.git</pre>
+          </div>
+          <p class="step-desc">Clone 完成後，VS Code → <strong>File → Open Folder</strong> → 選剛才 clone 的 <code style="background:var(--bg2);padding:1px 5px;border-radius:3px">portfolio</code> 資料夾。</p>
           <div class="alert alert-success">
             <span class="alert-icon">✅</span>
-            <span>能看到網站（即使是空白頁面）就算完成第 1 週作業。請把網址記下來。</span>
+            <span>VS Code 左下角出現 <strong>main</strong> 分支標示，代表 Git 連線成功。</span>
           </div>
         </div>
       </div>
@@ -217,8 +274,8 @@
       <div class="step">
         <div class="step-num">4</div>
         <div class="step-body">
-          <div class="step-title">建立必要檔案結構</div>
-          <p class="step-desc">你的 repository 至少需要包含以下檔案：</p>
+          <div class="step-title">建立必要檔案 & 本機即時預覽</div>
+          <p class="step-desc">在 VS Code 的檔案總管建立以下結構（綠色為必要，灰色為選配）：</p>
           <div class="file-tree">
 <span class="ft-dir">portfolio/</span>
 ├── <span class="ft-req">index.html</span>        <span class="ft-note"># 作品集首頁（必要）</span>
@@ -231,14 +288,19 @@
 └── <span class="ft-opt">images/</span>            <span class="ft-note"># 圖片資源（選配）</span>
           </div>
 
-          <p class="step-desc" style="margin-top:.75rem">複製以下模板到你的 <strong>README.md</strong>（必須包含這些資訊）：</p>
+          <div class="alert alert-info" style="margin:.75rem 0">
+            <span class="alert-icon">🟢</span>
+            <span><strong>Live Server 即時預覽：</strong>在 VS Code 對 <code style="background:#fff;padding:1px 5px;border-radius:3px">index.html</code> 按右鍵 → <strong>Open with Live Server</strong>，存檔後瀏覽器自動更新，不需要手動重新整理。</span>
+          </div>
+
+          <p class="step-desc">複製以下模板到 <strong>README.md</strong>：</p>
           <div class="code-wrap">
             <span class="code-label">README.md 必填模板</span>
             <button class="copy-btn" onclick="copyCode(this)">複製</button>
             <pre><span class="c">## 🎓 課程資訊</span>
-- 學號：<span class="v">B11234001</span>
-- 姓名：<span class="v">王小明</span>
-- 班級：<span class="v">資管三甲</span>
+- 學號：<span class="v">25101101</span>
+- 姓名：<span class="v">姜毓庭</span>
+- 班級：<span class="v">資管大一</span>
 - 作品網址：<span class="s">https://username.github.io/portfolio</span>
 - GitHub Repo：<span class="s">https://github.com/username/portfolio</span>
 
@@ -249,7 +311,6 @@
 - HTML5 語意化標籤
 - CSS Flexbox / Grid 響應式佈局
 - JavaScript DOM 操作
-（依實際使用填寫）
 
 <span class="c">## 🤖 AI 使用說明</span>
 （簡述使用了哪些 AI 工具，以及如何使用）</pre>
@@ -259,13 +320,12 @@
           <div class="code-wrap">
             <span class="code-label">DEVLOG.md 記錄模板</span>
             <button class="copy-btn" onclick="copyCode(this)">複製</button>
-            <pre><span class="c">## 2025-04-10：導覽列設計</span>
+            <pre><span class="c">## 2026-04-10：導覽列設計</span>
 <span class="k">原本想法：</span>用 float 排版
 <span class="k">遇到問題：</span>float 難以垂直置中
 <span class="k">改用方案：</span>Flexbox（justify-content: space-between）
 <span class="k">學到的事：</span>flex-shrink 的作用與預設值
-<span class="k">AI 協助：</span>有，請 ChatGPT 解釋 flex-shrink，
-          版型配色是自己決定的</pre>
+<span class="k">AI 協助：</span>有，請 ChatGPT 解釋 flex-shrink，版型配色是自己決定的</pre>
           </div>
         </div>
       </div>
@@ -274,8 +334,17 @@
       <div class="step">
         <div class="step-num">5</div>
         <div class="step-body">
-          <div class="step-title">養成定期 Commit 習慣</div>
-          <p class="step-desc">Commit 記錄是 40% 歷程評量的核心依據。每次完成一個功能就 commit 一次，不要累積太多才一起提交。</p>
+          <div class="step-title">用 VS Code 定期 Commit & Push</div>
+          <p class="step-desc">Commit 記錄是 40% 歷程評量的核心。每次完成一個功能就 commit，不要累積太多再一起提交。</p>
+
+          <p class="step-desc"><strong>VS Code Source Control 操作流程（建議使用）：</strong></p>
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-sm);padding:.85rem 1rem;font-size:13px;color:var(--text);line-height:2;margin-bottom:.75rem">
+            <span style="display:inline-block;background:var(--primary);color:#fff;border-radius:4px;padding:1px 7px;font-size:11px;font-weight:600;margin-right:4px">1</span> 按 <kbd style="background:#fff;border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:12px">Ctrl</kbd> + <kbd style="background:#fff;border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:12px">Shift</kbd> + <kbd style="background:#fff;border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:12px">G</kbd> 開啟 <strong>Source Control 面板</strong><br>
+            <span style="display:inline-block;background:var(--primary);color:#fff;border-radius:4px;padding:1px 7px;font-size:11px;font-weight:600;margin-right:4px">2</span> 在 Changes 區段，按修改檔案旁的 <strong>「+」</strong> 將檔案加入暫存（Stage）<br>
+            <span style="display:inline-block;background:var(--primary);color:#fff;border-radius:4px;padding:1px 7px;font-size:11px;font-weight:600;margin-right:4px">3</span> 在上方訊息欄輸入有意義的 <strong>commit 訊息</strong>（見下方範例）<br>
+            <span style="display:inline-block;background:var(--primary);color:#fff;border-radius:4px;padding:1px 7px;font-size:11px;font-weight:600;margin-right:4px">4</span> 按 <strong>「✓ Commit」</strong> 按鈕完成 commit<br>
+            <span style="display:inline-block;background:var(--primary);color:#fff;border-radius:4px;padding:1px 7px;font-size:11px;font-weight:600;margin-right:4px">5</span> 按 <strong>「↑ Sync Changes」</strong>（或 Push）上傳到 GitHub，網站自動更新
+          </div>
 
           <div class="commit-grid">
             <div class="commit-box good">
@@ -300,24 +369,6 @@
             <span class="alert-icon">⚠️</span>
             <span>每週至少 <strong>3 次有意義 commit</strong>。若最後一週才大量 commit，或單次 commit 超過 300 行，將列為異常並於口試重點追問。</span>
           </div>
-
-          <p class="step-desc" style="margin-top:.75rem">在電腦本機使用 Git 的基本指令：</p>
-          <div class="code-wrap">
-            <span class="code-label">Terminal / Git Bash</span>
-            <button class="copy-btn" onclick="copyCode(this)">複製</button>
-            <pre><span class="c"># 第一次設定（只需做一次）</span>
-git config --global user.name <span class="s">"你的姓名"</span>
-git config --global user.email <span class="s">"your@email.com"</span>
-
-<span class="c"># Clone repository 到本機</span>
-git clone https://github.com/<span class="v">username</span>/portfolio.git
-<span class="k">cd</span> portfolio
-
-<span class="c"># 每次修改後的提交流程</span>
-git add .
-git commit -m <span class="s">"feat: add hero section with animation"</span>
-git push</pre>
-          </div>
         </div>
       </div>
 
@@ -326,7 +377,7 @@ git push</pre>
         <div class="step-num">6</div>
         <div class="step-body">
           <div class="step-title">填寫繳交表單</div>
-          <p class="step-desc">完成初版網站後，填寫繳交表單讓老師知道你的 GitHub Pages 網址。<strong>繳交截止時間：第 7 週週五 23:59</strong>。</p>
+          <p class="step-desc">完成初版網站並 Push 到 GitHub 後，填寫繳交表單讓老師知道你的 GitHub Pages 網址。<strong>繳交截止時間：2026-06-21 23:59</strong>。</p>
           <div class="submit-box">
             <div class="submit-box-header">
               <div>
