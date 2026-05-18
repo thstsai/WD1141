@@ -176,24 +176,18 @@
           <div class="step-title">建立 GitHub 帳號 & 安裝開發工具</div>
           <p class="step-desc">前往 <a href="https://github.com" target="_blank">github.com</a> 註冊帳號，建議使用學號或真實姓名，方便老師識別。完成後依序安裝以下工具：</p>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:.75rem 0">
-            <div style="border:1px solid var(--border);border-radius:var(--r-sm);padding:.85rem;text-align:center">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:.75rem 0">
+            <div style="border:1.5px solid var(--primary);border-radius:var(--r-sm);padding:.85rem;text-align:center;background:var(--primary-lt)">
               <div style="font-size:22px;margin-bottom:4px">🔧</div>
               <div style="font-size:13px;font-weight:600">Git</div>
-              <div style="font-size:11px;color:var(--text2);margin-top:2px">版本控制核心</div>
-              <a href="https://git-scm.com/download/win" target="_blank" style="display:inline-block;margin-top:8px;font-size:11px;color:var(--primary);text-decoration:none;border:1px solid var(--primary-lt);background:var(--primary-lt);padding:3px 10px;border-radius:5px">下載安裝 →</a>
+              <div style="font-size:11px;color:var(--primary-dk);margin-top:2px">版本控制核心（必裝）</div>
+              <a href="https://git-scm.com/download/win" target="_blank" style="display:inline-block;margin-top:8px;font-size:11px;color:#fff;text-decoration:none;background:var(--primary);padding:3px 10px;border-radius:5px">下載安裝 →</a>
             </div>
-            <div style="border:1px solid var(--border);border-radius:var(--r-sm);padding:.85rem;text-align:center">
+            <div style="border:1.5px solid var(--primary);border-radius:var(--r-sm);padding:.85rem;text-align:center;background:var(--primary-lt)">
               <div style="font-size:22px;margin-bottom:4px">💙</div>
               <div style="font-size:13px;font-weight:600">VS Code</div>
-              <div style="font-size:11px;color:var(--text2);margin-top:2px">程式碼編輯器</div>
-              <a href="https://code.visualstudio.com" target="_blank" style="display:inline-block;margin-top:8px;font-size:11px;color:var(--primary);text-decoration:none;border:1px solid var(--primary-lt);background:var(--primary-lt);padding:3px 10px;border-radius:5px">下載安裝 →</a>
-            </div>
-            <div style="border:1px solid var(--border);border-radius:var(--r-sm);padding:.85rem;text-align:center">
-              <div style="font-size:22px;margin-bottom:4px">🐙</div>
-              <div style="font-size:13px;font-weight:600">GitHub Desktop</div>
-              <div style="font-size:11px;color:var(--text2);margin-top:2px">視覺化 Git 工具</div>
-              <a href="https://desktop.github.com" target="_blank" style="display:inline-block;margin-top:8px;font-size:11px;color:var(--primary);text-decoration:none;border:1px solid var(--primary-lt);background:var(--primary-lt);padding:3px 10px;border-radius:5px">下載安裝 →</a>
+              <div style="font-size:11px;color:var(--primary-dk);margin-top:2px">程式碼編輯器（必裝）</div>
+              <a href="https://code.visualstudio.com" target="_blank" style="display:inline-block;margin-top:8px;font-size:11px;color:#fff;text-decoration:none;background:var(--primary);padding:3px 10px;border-radius:5px">下載安裝 →</a>
             </div>
           </div>
 
@@ -244,14 +238,17 @@
           <div class="step-title">用 VS Code Clone Repository 到電腦</div>
           <p class="step-desc">把 GitHub 上的 repository 複製到本機，才能在 VS Code 編輯並推送到 GitHub Pages。</p>
 
-          <p class="step-desc"><strong>方法 A：用 GitHub Desktop（推薦初學者）</strong></p>
-          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-sm);padding:.85rem 1rem;font-size:13px;color:var(--text2);line-height:1.9;margin-bottom:.75rem">
-            1. 開啟 GitHub Desktop → 登入 GitHub 帳號<br>
-            2. <strong>File → Clone Repository</strong> → 選你的 <code style="background:#fff;padding:1px 5px;border-radius:3px">portfolio</code> repo → 選擇存放位置 → Clone<br>
-            3. 點 <strong>Open in Visual Studio Code</strong> → VS Code 自動開啟專案資料夾
+          <p class="step-desc"><strong>方法 A：VS Code 指令面板（推薦）</strong></p>
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-sm);padding:.85rem 1rem;font-size:13px;color:var(--text);line-height:2;margin-bottom:.75rem">
+            <span style="display:inline-block;background:var(--primary);color:#fff;border-radius:4px;padding:1px 7px;font-size:11px;font-weight:600;margin-right:4px">1</span>
+            按 <kbd style="background:#fff;border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:12px">Ctrl</kbd> + <kbd style="background:#fff;border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:12px">Shift</kbd> + <kbd style="background:#fff;border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:12px">P</kbd> 開啟指令面板 → 輸入 <code style="background:#fff;padding:1px 6px;border-radius:3px;font-size:12px">Git: Clone</code> → Enter<br>
+            <span style="display:inline-block;background:var(--primary);color:#fff;border-radius:4px;padding:1px 7px;font-size:11px;font-weight:600;margin-right:4px">2</span>
+            貼上 GitHub repo 網址（格式：<code style="background:#fff;padding:1px 6px;border-radius:3px;font-size:12px">https://github.com/你的帳號/portfolio.git</code>）<br>
+            <span style="display:inline-block;background:var(--primary);color:#fff;border-radius:4px;padding:1px 7px;font-size:11px;font-weight:600;margin-right:4px">3</span>
+            選擇存放位置（建議桌面或文件）→ 完成後點 <strong>Open</strong> 直接在 VS Code 開啟
           </div>
 
-          <p class="step-desc"><strong>方法 B：用 VS Code 內建終端機</strong></p>
+          <p class="step-desc"><strong>方法 B：VS Code 終端機指令</strong></p>
           <div class="code-wrap">
             <span class="code-label">VS Code 終端機（Ctrl + ` 開啟）</span>
             <button class="copy-btn" onclick="copyCode(this)">複製</button>
@@ -259,13 +256,13 @@
 git config --global user.name <span class="s">"你的姓名"</span>
 git config --global user.email <span class="s">"你的GitHub Email"</span>
 
-<span class="c"># Clone 到本機（貼上你的 repo 網址）</span>
-git clone https://github.com/<span class="v">你的帳號</span>/portfolio.git</pre>
+<span class="c"># Clone 到本機後用 VS Code 開啟</span>
+git clone https://github.com/<span class="v">你的帳號</span>/portfolio.git
+code portfolio</pre>
           </div>
-          <p class="step-desc">Clone 完成後，VS Code → <strong>File → Open Folder</strong> → 選剛才 clone 的 <code style="background:var(--bg2);padding:1px 5px;border-radius:3px">portfolio</code> 資料夾。</p>
           <div class="alert alert-success">
             <span class="alert-icon">✅</span>
-            <span>VS Code 左下角出現 <strong>main</strong> 分支標示，代表 Git 連線成功。</span>
+            <span>VS Code 左下角出現 <strong>main</strong> 分支標示，代表 Git 連線成功，可以開始編輯。</span>
           </div>
         </div>
       </div>
