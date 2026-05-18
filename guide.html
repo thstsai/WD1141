@@ -123,11 +123,12 @@
     .faq-item.open .faq-a { display: block; }
 
     /* SUBMIT BOX */
-    .submit-box { background: var(--primary-lt); border: 1.5px solid var(--primary); border-radius: var(--r); padding: 1.5rem; text-align: center; }
-    .submit-box h3 { font-size: 16px; font-weight: 700; color: var(--primary-dk); margin-bottom: .5rem; }
-    .submit-box p { font-size: 13px; color: var(--primary-dk); margin-bottom: 1.1rem; opacity: .85; }
-    .btn-submit { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: #fff; font-size: 14px; font-weight: 600; padding: 11px 24px; border-radius: var(--r-sm); text-decoration: none; transition: .15s; }
-    .btn-submit:hover { background: var(--primary-dk); }
+    .submit-box { border: 1.5px solid var(--primary); border-radius: var(--r); overflow: hidden; }
+    .submit-box-header { background: var(--primary-lt); padding: 1rem 1.5rem; display: flex; align-items: center; gap: 10px; }
+    .submit-box-header h3 { font-size: 15px; font-weight: 700; color: var(--primary-dk); }
+    .submit-box-header p  { font-size: 12px; color: var(--primary-dk); opacity: .8; margin-top: 2px; }
+    .form-wrap { background: #fff; }
+    .form-wrap iframe { display: block; width: 100%; border: none; }
 
     /* FOOTER */
     footer { border-top: 1px solid var(--border); padding: 2rem 0; text-align: center; color: var(--text2); font-size: 13px; }
@@ -327,10 +328,15 @@ git push</pre>
           <div class="step-title">填寫繳交表單</div>
           <p class="step-desc">完成初版網站後，填寫繳交表單讓老師知道你的 GitHub Pages 網址。<strong>繳交截止時間：第 7 週週五 23:59</strong>。</p>
           <div class="submit-box">
-            <h3>📬 期末專題繳交表單</h3>
-            <p>填寫學號、姓名、作品集網址與 GitHub Repo 連結</p>
-            <!-- 將下方 href 替換為實際 Google Form 連結 -->
-            <a href="#" class="btn-submit">前往填寫繳交表單 →</a>
+            <div class="submit-box-header">
+              <div>
+                <h3>📬 期末專題繳交表單</h3>
+                <p>填寫學號、姓名、作品集網址與 GitHub Repo 連結，截止日期：2026-06-21</p>
+              </div>
+            </div>
+            <div class="form-wrap">
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScumgUneoRtdEiTwrXp2mBnH_aSAUQevSoB2SLebGvhBNOU-w/viewform?embedded=true" height="853" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>
+            </div>
           </div>
           <div class="alert alert-info" style="margin-top:.75rem">
             <span class="alert-icon">💡</span>

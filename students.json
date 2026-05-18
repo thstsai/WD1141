@@ -1,71 +1,36 @@
 {
   "course": "網頁設計",
   "semester": "114-2",
-  "deadline": "2025-06-13",
+  "deadline": "2026-06-21",
   "students": [
-    {
-      "id": "B11234001",
-      "name": "王小明",
-      "github": "wang-xiaoming",
-      "repo": "portfolio",
-      "submitted": true,
-      "submitDate": "2025-04-02"
-    },
-    {
-      "id": "B11234002",
-      "name": "李雅婷",
-      "github": "yating-li",
-      "repo": "my-portfolio",
-      "submitted": true,
-      "submitDate": "2025-04-05"
-    },
-    {
-      "id": "B11234003",
-      "name": "陳志豪",
-      "github": "chih-hao-chen",
-      "repo": "portfolio",
-      "submitted": true,
-      "submitDate": "2025-04-08"
-    },
-    {
-      "id": "B11234004",
-      "name": "林佳蓉",
-      "github": "jiarong-lin",
-      "repo": "web-final",
-      "submitted": true,
-      "submitDate": "2025-04-10"
-    },
-    {
-      "id": "B11234005",
-      "name": "張建國",
-      "github": "jianguo-zhang",
-      "repo": "portfolio",
-      "submitted": false,
-      "submitDate": null
-    },
-    {
-      "id": "B11234006",
-      "name": "吳欣怡",
-      "github": "xinyi-wu",
-      "repo": "portfolio-site",
-      "submitted": true,
-      "submitDate": "2025-04-12"
-    },
-    {
-      "id": "B11234007",
-      "name": "劉承翰",
-      "github": "chenghan-liu",
-      "repo": "portfolio",
-      "submitted": false,
-      "submitDate": null
-    },
-    {
-      "id": "B11234008",
-      "name": "黃雅琦",
-      "github": "yaqi-huang",
-      "repo": "my-web-portfolio",
-      "submitted": true,
-      "submitDate": "2025-04-14"
-    }
+    { "id": "21101126", "name": "蘇奕誠",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "22101124", "name": "鄭洛斯",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "22101125", "name": "陸瑜柔",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "22113131", "name": "羅時佑",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "22113160", "name": "周永祺",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "24101120", "name": "劉哲瑋",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101101", "name": "姜毓庭",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101105", "name": "蔡凱宇",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101106", "name": "楊錢秉秝",   "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101107", "name": "蘇柏恩",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101108", "name": "李宜潔",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101109", "name": "謝仁凱",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101110", "name": "郭勁廷",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101112", "name": "黃宥誠",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101113", "name": "簡呈凱",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101114", "name": "張亦傑",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101115", "name": "王意晴",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101117", "name": "武文成",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101118", "name": "團氏秋紅",   "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101119", "name": "阮氏玄鶬",   "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101120", "name": "阮黄如氏竹玲","github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101121", "name": "佐佐木大晴", "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101122", "name": "阮氏夢兒",   "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101123", "name": "阮氏明書",   "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101124", "name": "阮氏美影",   "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101125", "name": "杜氏紅蓉",   "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101126", "name": "阮文武",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25101127", "name": "阮俊英",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null },
+    { "id": "25313113", "name": "唐湘婷",     "github": "", "repo": "portfolio", "submitted": false, "submitDate": null }
   ]
 }
