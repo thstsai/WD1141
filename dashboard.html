@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>老師查閱 · 網頁設計期末專題</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #534AB7; --primary-lt: #EEEDFE; --primary-dk: #3C3489;
+      --teal: #1D9E75;    --teal-lt: #E1F5EE;
+      --amber: #BA7517;   --amber-lt: #FAEEDA;
+      --coral: #D85A30;   --coral-lt: #FAECE7;
+      --red: #E24B4A;     --red-lt: #FDEAEA;
+      --text: #111827; --text2: #6b7280;
+      --bg: #fff; --bg2: #f9fafb;
+      --border: #e5e7eb;
+      --r: 12px; --r-sm: 8px;
+      --shadow: 0 1px 3px rgba(0,0,0,.08);
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang TC', 'Microsoft JhengHei', sans-serif; color: var(--text); background: var(--bg2); line-height: 1.6; }
+
+    /* NAV */
+    .nav { position: sticky; top: 0; background: rgba(255,255,255,.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 100; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { font-size: 14px; font-weight: 700; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .nav-brand-dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; }
+    .nav-links { display: flex; gap: 4px; }
+    .nav-a { font-size: 13px; padding: 6px 12px; border-radius: var(--r-sm); text-decoration: none; color: var(--text2); transition: .15s; }
+    .nav-a:hover { background: var(--bg2); color: var(--text); }
+    .nav-a.active { background: var(--primary-lt); color: var(--primary); font-weight: 500; }
+    .nav-a.pill { background: var(--primary); color: #fff; font-weight: 500; }
+    .nav-a.pill:hover { background: var(--primary-dk); color: #fff; }
+
+    /* LAYOUT */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* PAGE HEADER */
+    .page-header { padding: 2rem 0 1.5rem; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .page-header h1 { font-size: 22px; font-weight: 700; letter-spacing: -.3px; }
+    .page-header p { font-size: 13px; color: var(--text2); margin-top: 2px; }
+
+    /* STAT CARDS */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 1.5rem; }
+    .stat { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); padding: 1.1rem 1.25rem; box-shadow: var(--shadow); }
+    .stat-num { font-size: 28px; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+    .stat-label { font-size: 12px; color: var(--text2); }
+    .stat.s-total .stat-num { color: var(--primary); }
+    .stat.s-done  .stat-num { color: var(--teal); }
+    .stat.s-pend  .stat-num { color: var(--coral); }
+    .stat.s-rate  .stat-num { color: var(--amber); }
+
+    /* TOOLBAR */
+    .toolbar { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); padding: 1rem 1.25rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; box-shadow: var(--shadow); }
+    .toolbar-label { font-size: 12px; color: var(--text2); font-weight: 500; white-space: nowrap; }
+    input[type=text], input[type=password], select {
+      font-size: 13px; padding: 7px 10px; border: 1px solid var(--border); border-radius: var(--r-sm);
+      outline: none; background: var(--bg2); color: var(--text); transition: border .15s;
+      font-family: inherit;
+    }
+    input[type=text]:focus, input[type=password]:focus, select:focus { border-color: var(--primary); background: #fff; }
+    .toolbar-sep { width: 1px; height: 24px; background: var(--border); flex-shrink: 0; }
+    .btn-sm { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500; padding: 7px 14px; border-radius: var(--r-sm); border: 1px solid var(--border); background: var(--bg); color: var(--text); cursor: pointer; transition: .15s; white-space: nowrap; }
+    .btn-sm:hover { background: var(--bg2); }
+    .btn-sm.primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .btn-sm.primary:hover { background: var(--primary-dk); }
+    .btn-sm.success { background: var(--teal); color: #fff; border-color: var(--teal); }
+    .btn-sm.success:hover { background: #168a65; }
+    .token-wrap { display: flex; align-items: center; gap: 6px; }
+    #tokenInput { width: 220px; font-family: monospace; font-size: 12px; }
+
+    /* TABLE */
+    .table-wrap { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 2rem; }
+    .table-meta { padding: .75rem 1.25rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); gap: 10px; flex-wrap: wrap; }
+    .table-meta-left { display: flex; align-items: center; gap: 10px; }
+    #searchInput { width: 200px; }
+    #filterSelect { width: 120px; }
+    .count-badge { font-size: 12px; color: var(--text2); }
+
+    table { width: 100%; border-collapse: collapse; }
+    thead th { font-size: 11px; font-weight: 600; color: var(--text2); text-transform: uppercase; letter-spacing: .5px; padding: .65rem 1rem; background: var(--bg2); border-bottom: 1px solid var(--border); text-align: left; white-space: nowrap; }
+    thead th.sortable { cursor: pointer; user-select: none; }
+    thead th.sortable:hover { color: var(--primary); }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background .1s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #fafbff; }
+    td { padding: .8rem 1rem; font-size: 13px; vertical-align: middle; }
+    td.id-col { font-family: monospace; font-size: 12px; color: var(--text2); }
+    td.name-col { font-weight: 500; }
+
+    /* STATUS BADGE */
+    .status { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
+    .status.submitted { background: var(--teal-lt); color: #085041; }
+    .status.pending   { background: var(--red-lt);  color: #7f1d1d; }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; }
+    .status.submitted .status-dot { background: var(--teal); }
+    .status.pending   .status-dot { background: var(--red); }
+
+    /* COMMIT STATUS */
+    .commit-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 500; padding: 2px 8px; border-radius: 6px; white-space: nowrap; }
+    .commit-badge.good    { background: var(--teal-lt); color: #085041; }
+    .commit-badge.warn    { background: var(--amber-lt); color: #633806; }
+    .commit-badge.low     { background: var(--red-lt); color: #7f1d1d; }
+    .commit-badge.loading { background: var(--bg2); color: var(--text2); }
+    .commit-badge.error   { background: var(--bg2); color: var(--text2); font-style: italic; }
+
+    /* LINKS */
+    .link-group { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tbl-link { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--primary); text-decoration: none; padding: 3px 8px; border-radius: 5px; border: 1px solid var(--primary-lt); background: var(--primary-lt); transition: .15s; white-space: nowrap; }
+    .tbl-link:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .tbl-link.disabled { color: var(--text2); border-color: var(--border); background: var(--bg2); pointer-events: none; opacity: .5; }
+
+    /* EMPTY STATE */
+    .empty { padding: 3rem; text-align: center; color: var(--text2); font-size: 14px; }
+
+    /* LOADING OVERLAY */
+    .loading-bar { height: 3px; background: var(--primary-lt); position: relative; overflow: hidden; }
+    .loading-bar.active::after {
+      content: ''; position: absolute; left: -40%; width: 40%; height: 100%;
+      background: var(--primary); animation: loading 1s infinite linear;
+    }
+    @keyframes loading { to { left: 100%; } }
+
+    /* TOAST */
+    #toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: #1e1e2e; color: #cdd6f4; font-size: 13px; padding: .75rem 1.25rem; border-radius: var(--r-sm); box-shadow: 0 4px 16px rgba(0,0,0,.2); transform: translateY(80px); opacity: 0; transition: all .25s; z-index: 999; pointer-events: none; }
+    #toast.show { transform: translateY(0); opacity: 1; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 1.5rem 0; text-align: center; color: var(--text2); font-size: 12px; background: var(--bg); }
+
+    @media (max-width: 900px) {
+      .stats { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .stats { grid-template-columns: 1fr 1fr; }
+      .nav-a:not(.pill):not(.active) { display: none; }
+      .toolbar { flex-direction: column; align-items: flex-start; }
+      #tokenInput { width: 100%; }
+      table { font-size: 12px; }
+      td { padding: .6rem .75rem; }
+      thead th { padding: .55rem .75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <span class="nav-brand-dot"></span>網頁設計 期末專題
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-a">專題說明</a>
+      <a href="guide.html" class="nav-a">繳交指南</a>
+      <a href="dashboard.html" class="nav-a active">老師查閱</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="page-header">
+    <div>
+      <h1>繳交狀況查閱</h1>
+      <p id="courseInfo">載入中…</p>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn-sm" onclick="exportCSV()">⬇ 匯出 CSV</button>
+      <button class="btn-sm primary" onclick="checkAllCommits()">🔄 更新 Commit 資料</button>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat s-total"><div class="stat-num" id="s-total">—</div><div class="stat-label">全班人數</div></div>
+    <div class="stat s-done" ><div class="stat-num" id="s-done">—</div><div class="stat-label">已繳交</div></div>
+    <div class="stat s-pend" ><div class="stat-num" id="s-pend">—</div><div class="stat-label">未繳交</div></div>
+    <div class="stat s-rate" ><div class="stat-num" id="s-rate">—</div><div class="stat-label">繳交率</div></div>
+  </div>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <span class="toolbar-label">🔑 GitHub Token（選填，提高 API 限制）：</span>
+    <div class="token-wrap">
+      <input type="password" id="tokenInput" placeholder="ghp_xxxxxxxxxxxx">
+      <button class="btn-sm" onclick="toggleToken()">顯示</button>
+    </div>
+    <div class="toolbar-sep"></div>
+    <span class="toolbar-label">說明：</span>
+    <span style="font-size:12px;color:var(--text2)">未填 Token 每小時限 60 次 API；填入可提升至 5000 次</span>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <div class="loading-bar" id="loadingBar"></div>
+    <div class="table-meta">
+      <div class="table-meta-left">
+        <input type="text" id="searchInput" placeholder="搜尋學號或姓名…" oninput="renderTable()">
+        <select id="filterSelect" onchange="renderTable()">
+          <option value="all">全部學生</option>
+          <option value="submitted">已繳交</option>
+          <option value="pending">未繳交</option>
+          <option value="danger">Commit 不足</option>
+        </select>
+      </div>
+      <span class="count-badge" id="countBadge"></span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>學號</th>
+          <th>姓名</th>
+          <th>繳交狀態</th>
+          <th>繳交日期</th>
+          <th class="sortable" onclick="sortByCommits()">Commit 數 ↕</th>
+          <th>最後 Commit</th>
+          <th>連結</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+    <div class="empty" id="emptyState" style="display:none">沒有符合條件的學生</div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    資訊管理學系 · 網頁設計課程 · 113 學年度第二學期 ·
+    Commit 資料來自 GitHub API，點擊「更新 Commit 資料」重新查詢
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+  let students = [];
+  let commitData = {};   // { "github/repo": { count, lastDate, status } }
+  let sortCommitsAsc = false;
+
+  // ── INIT ──────────────────────────────────────────────────────────────────
+  fetch('students.json')
+    .then(r => r.json())
+    .then(data => {
+      students = data.students;
+      document.getElementById('courseInfo').textContent =
+        `${data.course} · ${data.semester} · 繳交截止：${data.deadline}`;
+      updateStats();
+      renderTable();
+    })
+    .catch(() => showToast('❌ 無法載入 students.json'));
+
+  // ── STATS ─────────────────────────────────────────────────────────────────
+  function updateStats() {
+    const total = students.length;
+    const done  = students.filter(s => s.submitted).length;
+    const pend  = total - done;
+    document.getElementById('s-total').textContent = total;
+    document.getElementById('s-done').textContent  = done;
+    document.getElementById('s-pend').textContent  = pend;
+    document.getElementById('s-rate').textContent  = total ? Math.round(done / total * 100) + '%' : '—';
+  }
+
+  // ── RENDER TABLE ──────────────────────────────────────────────────────────
+  function renderTable() {
+    const search = document.getElementById('searchInput').value.toLowerCase();
+    const filter = document.getElementById('filterSelect').value;
+
+    let rows = students.filter(s => {
+      const matchSearch = s.id.toLowerCase().includes(search) || s.name.includes(search);
+      if (!matchSearch) return false;
+      if (filter === 'submitted') return s.submitted;
+      if (filter === 'pending')   return !s.submitted;
+      if (filter === 'danger') {
+        const key = `${s.github}/${s.repo}`;
+        const cd  = commitData[key];
+        return cd && cd.count !== null && cd.count < 10;
+      }
+      return true;
+    });
+
+    document.getElementById('countBadge').textContent = `顯示 ${rows.length} / ${students.length} 人`;
+
+    const tbody = document.getElementById('tableBody');
+    const empty = document.getElementById('emptyState');
+
+    if (rows.length === 0) {
+      tbody.innerHTML = '';
+      empty.style.display = '';
+      return;
+    }
+    empty.style.display = 'none';
+
+    tbody.innerHTML = rows.map(s => {
+      const key = `${s.github}/${s.repo}`;
+      const cd  = commitData[key];
+      const siteUrl = s.submitted ? `https://${s.github}.github.io/${s.repo}` : null;
+      const repoUrl = s.submitted ? `https://github.com/${s.github}/${s.repo}` : null;
+      const logUrl  = repoUrl ? `${repoUrl}/commits` : null;
+
+      return `<tr>
+        <td class="id-col">${s.id}</td>
+        <td class="name-col">${s.name}</td>
+        <td>${statusBadge(s.submitted)}</td>
+        <td style="font-size:12px;color:var(--text2)">${s.submitDate ?? '—'}</td>
+        <td>${commitBadge(cd)}</td>
+        <td style="font-size:12px;color:var(--text2)">${cd?.lastDate ?? '—'}</td>
+        <td>
+          <div class="link-group">
+            ${siteUrl ? `<a class="tbl-link" href="${siteUrl}" target="_blank">🌐 網站</a>` : `<span class="tbl-link disabled">🌐 網站</span>`}
+            ${repoUrl ? `<a class="tbl-link" href="${repoUrl}" target="_blank">📁 Repo</a>` : `<span class="tbl-link disabled">📁 Repo</span>`}
+            ${logUrl  ? `<a class="tbl-link" href="${logUrl}"  target="_blank">📜 Commits</a>` : `<span class="tbl-link disabled">📜 Commits</span>`}
+          </div>
+        </td>
+      </tr>`;
+    }).join('');
+  }
+
+  function statusBadge(submitted) {
+    return submitted
+      ? `<span class="status submitted"><span class="status-dot"></span>已繳交</span>`
+      : `<span class="status pending"><span class="status-dot"></span>未繳交</span>`;
+  }
+
+  function commitBadge(cd) {
+    if (!cd) return `<span class="commit-badge loading">尚未查詢</span>`;
+    if (cd.error) return `<span class="commit-badge error" title="${cd.error}">查詢失敗</span>`;
+    if (cd.count === null) return `<span class="commit-badge loading">查詢中…</span>`;
+
+    const n = cd.count;
+    // 8 weeks × 3 commits/week = 24 expected; flag <10 as low, 10-17 as warn
+    const cls = n >= 18 ? 'good' : n >= 10 ? 'warn' : 'low';
+    const icon = n >= 18 ? '✅' : n >= 10 ? '⚠️' : '🔴';
+    return `<span class="commit-badge ${cls}">${icon} ${n} commits</span>`;
+  }
+
+  // ── GITHUB API ────────────────────────────────────────────────────────────
+  function getHeaders() {
+    const token = document.getElementById('tokenInput').value.trim();
+    return token ? { Authorization: `token ${token}` } : {};
+  }
+
+  async function fetchCommits(github, repo) {
+    const key = `${github}/${repo}`;
+    commitData[key] = { count: null, lastDate: null };
+    renderTable();
+
+    try {
+      // Fetch up to 100 commits (one page); for large repos you'd paginate
+      const res = await fetch(
+        `https://api.github.com/repos/${github}/${repo}/commits?per_page=100`,
+        { headers: getHeaders() }
+      );
+      if (res.status === 404) { commitData[key] = { error: 'Repo 不存在或為私有' }; return; }
+      if (res.status === 403) { commitData[key] = { error: 'API 限額已用完，請填入 Token' }; return; }
+      if (!res.ok)            { commitData[key] = { error: `HTTP ${res.status}` }; return; }
+
+      const commits = await res.json();
+      const count   = commits.length;
+      const lastDate = count > 0
+        ? commits[0].commit.author.date.slice(0, 10)
+        : null;
+
+      // Check for Link header to detect if there are more pages
+      const link = res.headers.get('Link') || '';
+      const hasMore = link.includes('rel="next"');
+      commitData[key] = { count: hasMore ? count + '+' : count, lastDate };
+    } catch (e) {
+      commitData[key] = { error: '網路錯誤' };
+    }
+    renderTable();
+  }
+
+  async function checkAllCommits() {
+    const submitted = students.filter(s => s.submitted);
+    if (submitted.length === 0) { showToast('沒有已繳交的學生'); return; }
+
+    setLoading(true);
+    showToast(`開始查詢 ${submitted.length} 位學生的 commit 資料…`);
+
+    // Sequential to avoid hammering the API
+    for (const s of submitted) {
+      await fetchCommits(s.github, s.repo);
+      await sleep(300);
+    }
+
+    setLoading(false);
+    showToast('✅ Commit 資料更新完成');
+  }
+
+  // ── SORT ──────────────────────────────────────────────────────────────────
+  function sortByCommits() {
+    sortCommitsAsc = !sortCommitsAsc;
+    students.sort((a, b) => {
+      const ca = commitData[`${a.github}/${a.repo}`]?.count ?? -1;
+      const cb = commitData[`${b.github}/${b.repo}`]?.count ?? -1;
+      const na = typeof ca === 'string' ? parseInt(ca) : ca;
+      const nb = typeof cb === 'string' ? parseInt(cb) : cb;
+      return sortCommitsAsc ? na - nb : nb - na;
+    });
+    renderTable();
+  }
+
+  // ── EXPORT CSV ────────────────────────────────────────────────────────────
+  function exportCSV() {
+    const rows = [['學號', '姓名', '繳交狀態', '繳交日期', 'Commit數', '最後Commit', '作品集網址', 'Repo網址']];
+    students.forEach(s => {
+      const key = `${s.github}/${s.repo}`;
+      const cd  = commitData[key];
+      rows.push([
+        s.id, s.name,
+        s.submitted ? '已繳交' : '未繳交',
+        s.submitDate ?? '',
+        cd?.count ?? '',
+        cd?.lastDate ?? '',
+        s.submitted ? `https://${s.github}.github.io/${s.repo}` : '',
+        s.submitted ? `https://github.com/${s.github}/${s.repo}` : ''
+      ]);
+    });
+    const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\n');
+    const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `期末專題繳交狀況_${new Date().toISOString().slice(0,10)}.csv`;
+    a.click();
+    showToast('✅ CSV 已匯出');
+  }
+
+  // ── UTILS ─────────────────────────────────────────────────────────────────
+  function toggleToken() {
+    const inp = document.getElementById('tokenInput');
+    inp.type = inp.type === 'password' ? 'text' : 'password';
+  }
+
+  function setLoading(on) {
+    document.getElementById('loadingBar').classList.toggle('active', on);
+  }
+
+  function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+  let toastTimer;
+  function showToast(msg) {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove('show'), 3000);
+  }
+</script>
+
+</body>
+</html>

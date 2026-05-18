@@ -1,0 +1,71 @@
+{
+  "course": "網頁設計",
+  "semester": "113-2",
+  "deadline": "2025-06-13",
+  "students": [
+    {
+      "id": "B11234001",
+      "name": "王小明",
+      "github": "wang-xiaoming",
+      "repo": "portfolio",
+      "submitted": true,
+      "submitDate": "2025-04-02"
+    },
+    {
+      "id": "B11234002",
+      "name": "李雅婷",
+      "github": "yating-li",
+      "repo": "my-portfolio",
+      "submitted": true,
+      "submitDate": "2025-04-05"
+    },
+    {
+      "id": "B11234003",
+      "name": "陳志豪",
+      "github": "chih-hao-chen",
+      "repo": "portfolio",
+      "submitted": true,
+      "submitDate": "2025-04-08"
+    },
+    {
+      "id": "B11234004",
+      "name": "林佳蓉",
+      "github": "jiarong-lin",
+      "repo": "web-final",
+      "submitted": true,
+      "submitDate": "2025-04-10"
+    },
+    {
+      "id": "B11234005",
+      "name": "張建國",
+      "github": "jianguo-zhang",
+      "repo": "portfolio",
+      "submitted": false,
+      "submitDate": null
+    },
+    {
+      "id": "B11234006",
+      "name": "吳欣怡",
+      "github": "xinyi-wu",
+      "repo": "portfolio-site",
+      "submitted": true,
+      "submitDate": "2025-04-12"
+    },
+    {
+      "id": "B11234007",
+      "name": "劉承翰",
+      "github": "chenghan-liu",
+      "repo": "portfolio",
+      "submitted": false,
+      "submitDate": null
+    },
+    {
+      "id": "B11234008",
+      "name": "黃雅琦",
+      "github": "yaqi-huang",
+      "repo": "my-web-portfolio",
+      "submitted": true,
+      "submitDate": "2025-04-14"
+    }
+  ]
+}
