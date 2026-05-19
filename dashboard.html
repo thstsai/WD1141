@@ -125,6 +125,20 @@
     #toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: #1e1e2e; color: #cdd6f4; font-size: 13px; padding: .75rem 1.25rem; border-radius: var(--r-sm); box-shadow: 0 4px 16px rgba(0,0,0,.2); transform: translateY(80px); opacity: 0; transition: all .25s; z-index: 999; pointer-events: none; }
     #toast.show { transform: translateY(0); opacity: 1; }
 
+    /* LOCK SCREEN */
+    #lockScreen { position: fixed; inset: 0; background: var(--bg2); z-index: 999; display: flex; align-items: center; justify-content: center; }
+    .lock-box { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); padding: 2.5rem 2rem; width: 340px; box-shadow: 0 8px 32px rgba(0,0,0,.1); text-align: center; }
+    .lock-icon { font-size: 36px; margin-bottom: 1rem; }
+    .lock-box h2 { font-size: 18px; font-weight: 700; margin-bottom: .3rem; }
+    .lock-box p  { font-size: 13px; color: var(--text2); margin-bottom: 1.5rem; }
+    .lock-input { width: 100%; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: var(--r-sm); font-size: 15px; text-align: center; letter-spacing: .1em; outline: none; transition: border .15s; font-family: monospace; }
+    .lock-input:focus { border-color: var(--primary); }
+    .lock-input.err { border-color: var(--red); animation: shake .3s; }
+    .lock-btn { margin-top: .75rem; width: 100%; padding: 11px; background: var(--primary); color: #fff; border: none; border-radius: var(--r-sm); font-size: 14px; font-weight: 600; cursor: pointer; transition: background .15s; }
+    .lock-btn:hover { background: var(--primary-dk); }
+    .lock-err { font-size: 12px; color: var(--red); margin-top: .5rem; height: 16px; }
+    @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+
     /* FOOTER */
     footer { border-top: 1px solid var(--border); padding: 1.5rem 0; text-align: center; color: var(--text2); font-size: 12px; background: var(--bg); }
 
@@ -143,6 +157,18 @@
   </style>
 </head>
 <body>
+
+<div id="lockScreen">
+  <div class="lock-box">
+    <div class="lock-icon">🔒</div>
+    <h2>教師專用查閱系統</h2>
+    <p>網頁設計 · 114 學年度第二學期</p>
+    <input class="lock-input" type="password" id="pwInput" placeholder="請輸入密碼" maxlength="20"
+           onkeydown="if(event.key==='Enter')checkPw()">
+    <button class="lock-btn" onclick="checkPw()">進入</button>
+    <div class="lock-err" id="pwErr"></div>
+  </div>
+</div>
 
 <nav class="nav">
   <div class="nav-inner">
@@ -232,6 +258,31 @@
 <div id="toast"></div>
 
 <script>
+  // ── PASSWORD GATE ─────────────────────────────────────────────────────────
+  (function() {
+    if (sessionStorage.getItem('auth') === '1') {
+      document.getElementById('lockScreen').style.display = 'none';
+    } else {
+      setTimeout(() => document.getElementById('pwInput').focus(), 100);
+    }
+  })();
+
+  function checkPw() {
+    const input = document.getElementById('pwInput');
+    const err   = document.getElementById('pwErr');
+    if (input.value === 'ths!1106') {
+      sessionStorage.setItem('auth', '1');
+      document.getElementById('lockScreen').style.display = 'none';
+    } else {
+      input.classList.remove('err');
+      void input.offsetWidth;
+      input.classList.add('err');
+      err.textContent = '密碼錯誤，請重新輸入';
+      input.value = '';
+      input.focus();
+    }
+  }
+
   let students = [];
   let commitData = {};   // { "github/repo": { count, lastDate, status } }
   let sortCommitsAsc = false;
